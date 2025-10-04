@@ -6,11 +6,12 @@ const SinglePost = () => {
     const { id } = useParams();
     console.log(id);
 
+
     const { data, isLoading, error } = useGetPostByIdQuery(id);
     console.log(data);
 
     if (error) return <p>some thing error</p>
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <p>Loading... and loading...</p>
 
     return (
         <div className='p-4'>
