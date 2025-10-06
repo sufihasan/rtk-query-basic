@@ -13,8 +13,30 @@ export const postsApi = createApi({
 
             query: (id) => `/posts/${id}`
 
+        }),
+        addNewPost: builder.mutation({
+            query: (data) => ({
+                url: '/posts',
+                method: 'POST',
+                body: data
+            })
+        }),
+        deletePostById: builder.mutation({
+            query: (id) => ({
+                url: `/posts/${id}`,
+                method: 'DELETE',
+            })
+        }),
+        updatePostById: builder.mutation({
+            query: ({ data, id }) => ({
+                url: `/posts/${id}`,
+                method: 'PATCH',
+                body: data
+            })
         })
     })
 })
 
-export const { useGetAllPostsQuery, useGetPostByIdQuery } = postsApi;
+export const { useGetAllPostsQuery, useGetPostByIdQuery, useAddNewPostMutation, useDeletePostByIdMutation,
+    useUpdatePostByIdMutation
+} = postsApi;
